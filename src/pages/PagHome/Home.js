@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import api from './services/api';
+import api from '../../services/api';
 
 import './global.css';
 import './Home.css';
 import './Sidebar.css';
 import './Main.css';
 
-import DevItem from './components/DevItem';
-import DevForm from './components/DevForm';
+import DevItem from '../../components/DevItem';
+import DevForm from '../../components/DevForm';
 
 
 function Home() {

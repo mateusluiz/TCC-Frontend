@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import api from './services/api'
+import api from '../../services/api'
 
-import DevUpdate from './components/DevUpdate'
+import DevUpdate from '../../components/DevUpdate'
 
 import './Update.css';
 
