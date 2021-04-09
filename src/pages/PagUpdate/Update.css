@@ -1,21 +1,10 @@
-/* aside invisible */
-
-/* aside.group-update.disabled {
-  display: none;
-}
-
-body {
-  position: relative;
-}
-
-aside.group-update.active {
-  position: absolute;
-  display: block;
+.container.update{
+  display: flex;
+  justify-content: center;
   align-items: center;
-} */
+}
 
-
-.group-update.disabled {
+.group-update {
   width: 320px;
   background: #fff;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
@@ -23,40 +12,40 @@ aside.group-update.active {
   padding: 30px 20px;
 }
 
-.group-update.disabled strong {
+.group-update strong {
  font-size: 20px;
  text-align: center;
  display: block;
  color: #00c763;
 }
 
-.group-update.disabled form {
+.group-update form {
  margin-top: 30px;
 }
 
-.group-update.disabled form .input-block + .input-block {
+.group-update form .input-block + .input-block {
  margin-top: 20px;
 }
 
-.group-update.disabled form .input-group {
+.group-update form .input-group {
  margin-top: 20px;
  display: grid;
  gap: 20px;
  grid-template-columns: 1fr 1fr;
 }
 
-.group-update.disabled form .input-group .input-block {
+.group-update form .input-group .input-block {
  margin-top: 0;
 }
 
-.group-update.disabled form .input-block label{
+.group-update form .input-block label{
   color: #00c763;
   font-size: 14px;
   font-weight: bold;
   display: block;
 }
 
-.group-update.disabled form .input-block input {
+.group-update form .input-block input {
   width: 100%;
   height: 32px;
   font-size: 14px;
@@ -65,7 +54,7 @@ aside.group-update.active {
   border-bottom: 1px solid #eee;
 }
 
-.group-update.disabled form button[type=submit] {
+.group-update form button[type=submit] {
   width: 100%;
   border: 0;
   margin-top: 30px;
@@ -79,10 +68,6 @@ aside.group-update.active {
   transition: background 0.5s;
 }
 
-.group-update.disabled form button[type=submit]:hover {
+.group-update form button[type=submit]:hover {
   background: #18be18;
-}
-
-.group-update.disabled {
-  margin: 200px 600px;
 }

@@ -19,9 +19,11 @@ function Update(){
 
   return (
 
-    <div className="group-update disabled">
-      <strong>Atualizar</strong>
-      <DevUpdate onSubmit={handleUpdateDev}/>
+    <div className="container update">
+      <div className="group-update">
+        <strong>Atualizar</strong>
+        <DevUpdate onSubmit={handleUpdateDev}/>
+      </div>
     </div>
   )
 }
