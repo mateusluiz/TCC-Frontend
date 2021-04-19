@@ -1,30 +1,54 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
+import crypto from 'crypto'
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css'; 
+
 import api from '../../services/api';
 
 import './styles.css';
 
+toast.configure()
+
 function DevItem ({ dev, callback }) {
     const [carregar, setCarregar] = useState(false);
+    const [mostrarDev, setMostrarDev] = useState(dev.github_username_crypt)
 
     async function handleDeleteDev(id) {
 
       setCarregar(true);
       await api.delete(`/delete/${id}`);
       setCarregar(false);
+
+      toast.success('Excluído com sucesso!')
     
       callback();
+    }
+
+    function decryptUser() {
+      const secret = 'aabbcccaabbcccaabbcccaabbcccaabb'
+      const [iv, encrypted] = dev.github_username_crypt.split(':')
+      const ivBuffer = Buffer.from(iv, 'hex')
+      const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(secret), ivBuffer)
+      let content = decipher.update(Buffer.from(encrypted, 'hex'))
+      content = Buffer.concat([content, decipher.final()])
+      
+      setMostrarDev(content.toString())
     }
 
     return (
         <li className="dev-item">
             <header>
-              <img src={dev.avatar_url} alt={dev.name} />
-              <div className="user-info">
-                <strong id="devName">{dev.name}</strong>
-                <span>{dev.techs.join(', ')}</span>
+              <div className="top-user">
+                <img src={dev.avatar_url} alt={dev.name} />
+                <div className="user-info">
+                  <strong id="devName">{dev.name}</strong>
+                  <span>{dev.techs.join(', ')}</span>
+                </div>
               </div>
 
+              <p className="crypto">{mostrarDev}</p>
             </header>
             <p>{dev.bio}</p>
             <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
@@ -49,11 +73,11 @@ function DevItem ({ dev, callback }) {
                   </button>
                 )}
 
-              
                 <Link to={`/atualizar/${dev.github_username}`}>
                   <button className="update-button">Atualizar</button>
                 </Link>
                 
+                <button className="delete-button" onClick={decryptUser}>Descriptografar</button>
               </div>
               
           </li>
