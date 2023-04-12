@@ -38,7 +38,11 @@ function Home() {
       setDevs([...devs, response.data]);
 
     } catch (error) {
-      toast.warn('Já cadastrado')
+      if(error.response.data.message.includes('Esse usuário não existe')){
+        toast.warn('Esse usuário não existe')
+      } else {
+        toast.warn('Já cadastrado')
+      }
     }
   }
 
