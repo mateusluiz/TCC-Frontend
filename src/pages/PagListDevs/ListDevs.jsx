@@ -1,48 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.min.css'; 
-
-import api from '../../services/api'
-// import DevUpdate from '../../components/DevUpdate'
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import './ListDevs.css';
+
+import api from '../../services/api'
+import DevItem from '../../components/DevItem';
+
 
 toast.configure()
 
 function ListDevs(){
+  const [devs, setDevs] = useState([]);
 
-//   const [devs, setDevs] = useState([]);
+  useEffect(() => {
 
-    
-//   async function handleListDevs(data) {
-    
-//     try {
-//       const response = await api.put(`/atualizar/${data.github_username}`, data)
+    loadDevs();
+  }, []);
 
-//       setDevs([...devs, response.data])
+  async function loadDevs(){
+    const response = await api.get('/devs');
 
-//       toast.success('Alterado com sucesso!')
-//       toast('Você será redirecionado em 5 segundos')
-
-//       setTimeout(() => {
-//         window.location.href="/"
-//       }, 5000)
-      
-//     } catch (error) {
-//       toast.error(error)
-//     }
-
-//   }
+    setDevs(response.data);
+  }
+  
+  async function loadDeleteDev(){
+    await loadDevs();
+  }
 
   return (
 
-    <div className="container update">
-      <div className="group-update">
-        <strong>Devs Cadastrados</strong>
-        {/* <DevUpdate onSubmit={handleUpdateDev}/> */}
+    <div className="container">
+      <div id="app">
+        <main>
+          <ul>
+            {devs.map(dev => (
+              <DevItem key={dev._id} dev={dev} callback={loadDeleteDev}/>
+            ))}
+          </ul>
+        </main>
       </div>
     </div>
+    
   )
 }
 
