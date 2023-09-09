@@ -40,24 +40,22 @@ function DevItem ({ dev, callback }) {
     return (
         <li className="dev-item">
             <header>
-              <div className="top-user">
-                <img src={dev.avatar_url} alt={dev.name} />
                 <div className="user-info">
-                  <strong id="devName">{dev.name}</strong>
-                  <span>{dev.techs.join(', ')}</span>
+                  <img src={dev.avatar_url} alt={dev.name} />
+                  <div class="first-info">
+                    <strong id="devName">{dev.name}</strong>
+                    <span>{dev.techs.join(', ')}</span>
+                  </div>
                 </div>
+              <div class="second-info">
+                <p className="crypto">{mostrarDev}</p>
+                <button className="decrypt-user" onClick={decryptUser}>Descriptografar</button>
               </div>
 
-              <p className="crypto">{mostrarDev}</p>
             </header>
             <p>{dev.bio}</p>
-            <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
-            target="_blank"
-            rel="noopener noreferrer"
-            >Acessar perfil no Github</a>
-
             <div className="group-button">
-                {!carregar && (
+                {/* {!carregar && (
                   <button className="delete-button"
                   onClick={() => {handleDeleteDev(dev._id)}}
                   title={`Excluir o usuário ${dev.github_username}`} >
@@ -75,9 +73,13 @@ function DevItem ({ dev, callback }) {
 
                 <Link to={`/atualizar/${dev.github_username}`}>
                   <button className="update-button">Atualizar</button>
-                </Link>
-                
-                <button className="delete-button" onClick={decryptUser}>Descriptografar</button>
+                </Link> */}
+                <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
+                target="_blank"
+                rel="noopener noreferrer"
+                >Acessar perfil no Github</a>
+
+                <button className="more">Ver mais</button>
               </div>
               
           </li>

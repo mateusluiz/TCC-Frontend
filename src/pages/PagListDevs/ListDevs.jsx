@@ -34,6 +34,8 @@ function ListDevs(){
     <div className="container">
       <div id="app">
         <main>
+          <strong>Devs cadastrados</strong>
+          <hr />
           <ul>
             {devs.map(dev => (
               <DevItem key={dev._id} dev={dev} callback={loadDeleteDev}/>
