@@ -1,16 +1,77 @@
 main {
-    flex: 1;
-}
-
-main ul {
+    width: 320px;
+    background: #fff;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 30px;
+    padding: 30px 20px;
+  }
+  
+  main strong {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    color: #001A14;
+    padding-bottom: 8px;
+  }
+  
+  hr {
+    background: rgba(0, 26, 20, 0.50);
+  }
+  
+  main form {
+    margin-top: 30px;
+  }
+  
+  main form .input-block + .input-block {
+    margin-top: 20px;
+  }
+  
+  main form .input-group {
+    margin-top: 20px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    list-style: none;
-}
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  main form .input-group .input-block {
+    margin-top: 0;
+  }
+  
+  main form .input-block label {
+    color: #001A14;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+  }
+  
+  main form .input-block input {
+    width: 100%;
+    height: 32px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 26, 20, 0.37);
+    background: rgba(245, 245, 245, 0.10);
+    padding-left: 4px;
+  }
+  
+  main form button[type=submit] {
+    width: 100%;
+    border: 0;
+    margin-top: 30px;
+    background: #001A14;
+    border-radius: 30px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.5s;
+  }
+  
+  main form button[type=submit]:hover {
+    background: #203732;
+  }
 
 @media (max-width: 650px) {
-    main ul {
-        grid-template-columns: 1fr;
-    }
+
 }

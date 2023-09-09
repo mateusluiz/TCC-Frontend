@@ -88,7 +88,7 @@ function DevForm({ onSubmit }){
             </div>
           </div>
 
-          <button type="submit">Salvar</button>
+          <button type="submit">Cadastrar</button>
         </form>
     );
 }

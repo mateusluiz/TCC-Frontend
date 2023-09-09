@@ -1,5 +1,5 @@
 .container {
-  background-color: rgba(185, 255, 189, 0.1);
+  background-color: #001A14;
   height: 100vh;
 }
 
@@ -7,20 +7,16 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 60px 30px;
-
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-
-}
-
-#app main {
-    margin-left: 30px;
+    justify-content: center;
 }
 
 @media (max-width: 1000px) {
     #app {
         flex-direction: column;
+        align-items: center;
     }
 
     #app main {
@@ -28,7 +24,4 @@
         margin-top: 30px;
     }
 
-    #app aside {
-        width: 100%;
-    }
 }
