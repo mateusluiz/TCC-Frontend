@@ -39,7 +39,8 @@ function Update(){
 
     <div className="container update">
       <div className="group-update">
-        <strong>Atualizar</strong>
+        <strong>Meu usuário</strong>
+        <hr />
         <DevUpdate onSubmit={handleUpdateDev}/>
       </div>
     </div>

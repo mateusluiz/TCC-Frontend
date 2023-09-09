@@ -85,7 +85,7 @@ li.dev-item .crypto {
 
 li.dev-item .delete-button, li.dev-item .update-button, .more, .decrypt-user {
     cursor: pointer;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 500;
     border: 0;
     align-self: center;

@@ -55,7 +55,7 @@ function DevItem ({ dev, callback }) {
             </header>
             <p>{dev.bio}</p>
             <div className="group-button">
-                {/* {!carregar && (
+                {!carregar && (
                   <button className="delete-button"
                   onClick={() => {handleDeleteDev(dev._id)}}
                   title={`Excluir o usuário ${dev.github_username}`} >
@@ -73,7 +73,7 @@ function DevItem ({ dev, callback }) {
 
                 <Link to={`/atualizar/${dev.github_username}`}>
                   <button className="update-button">Atualizar</button>
-                </Link> */}
+                </Link>
                 <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
                 target="_blank"
                 rel="noopener noreferrer"
