@@ -43,7 +43,7 @@ li.dev-item header .user-info {
 
 .first-info {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: column;
   justify-content: space-evenly;
 }

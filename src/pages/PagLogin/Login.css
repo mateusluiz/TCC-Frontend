@@ -1,0 +1,11 @@
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.options-group{
+    display: flex;
+    flex-direction: column;
+}
