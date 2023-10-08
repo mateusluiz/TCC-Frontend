@@ -73,6 +73,7 @@ function DevLogin() {
                     <div class="options-group">
                         <a href="/cadastrar-dev">Cadastrar Dev</a>
                         <a href="/lista-devs">Lista de Devs</a>
+                        <a href="/mapa">Mapa</a>
                     </div>
                     <button onClick={logoutGithub} class="btn-logout">Logout</button>
                     <h4>Hey there {userData.login}</h4>
