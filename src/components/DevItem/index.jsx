@@ -42,7 +42,7 @@ function DevItem ({ dev, callback }) {
             <header>
                 <div className="user-info">
                   <img src={dev.avatar_url} alt={dev.name} />
-                  <div class="first-info">
+                  <div className="first-info">
                     <strong id="devName">{dev.name}</strong>
                     <span>{dev.techs.join(', ')}</span>
                   </div>
