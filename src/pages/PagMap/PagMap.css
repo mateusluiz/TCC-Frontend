@@ -1,6 +1,7 @@
 .Maps {
   height: 100vh;
   width: 100vw;
+  display: flex;
 }
 
 .map-container {
@@ -18,4 +19,18 @@
 .custom-marker-label {
   position: absolute;
   transform: translate(-50%, -160%); 
+}
+
+.tab-devs {
+  width: 400px;
+  background-color: white;
+}
+
+.dev-item {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.dev-item DevItemMap {
+  border-radius: 10px;
 }

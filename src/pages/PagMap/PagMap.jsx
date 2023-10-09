@@ -62,71 +62,93 @@ function PagMap(){
     setIsOpen(true);
   } 
 
+  const disableUnusedPoints = {
+    styles: [
+      {
+        featureType: 'poi',
+        stylers: [{ visibility: 'off' }]
+      }
+    ]
+  };
+
   return (
     <div className="Maps">
-      {!isLoaded ? (
-        <h1>Loading...</h1>
-      ) 
-      : 
-      ( 
-        <GoogleMap
-          mapContainerClassName="map-container"
-          center={center}
-          zoom={12}
-          options={{styles: [
+      <div className='tab-devs'>
+        {
+          devs.map((dev) => (
+              <div 
+                key={dev._id}
+                className='dev-item' 
+                onClick={() => handleMarkerClick(dev._id, dev.bio)} 
+              >
+                <DevItemMap dev={dev} showDescription={false} />
+              </div>
+            )
+          )
+        }
+      </div>
+      {
+        !isLoaded ? (
+          <h1>Loading...</h1>
+        ) 
+        : 
+        ( 
+          <GoogleMap
+            mapContainerClassName="map-container"
+            center={center}
+            zoom={12}
+            options={disableUnusedPoints}
+            onClick={() => setIsOpen(false)} // Fecha a janela ao clicar em qualquer parte do mapa
+          >
             {
-              featureType: 'poi',
-              stylers: [{ visibility: 'off' }]
-            }
-          ]}}
-          onClick={() => setIsOpen(false)} // Fecha a janela ao clicar em qualquer parte do mapa
-        >
-          {
-            devs.map(function (dev) {
-              const latitude = dev.location.coordinates[1];
-              const longitude = dev.location.coordinates[0];
+              devs.map(function (dev) {
+                const latitude = dev.location.coordinates[1];
+                const longitude = dev.location.coordinates[0];
 
-              return (
-                <div className='icon-map' key={dev._id}>
-                  <Marker
-                    position={{ lat: latitude, lng: longitude }}
-                    icon={{
-                      url: iconPin,
-                      scaledSize: new window.google.maps.Size(60, 60),
-                    }}
-                    onClick={() => {
-                      handleMarkerClick(dev._id, dev.bio);
-                    }}
-                  >
-                    {isOpen && infoWindowData?._id === dev._id && (
-                      <InfoWindow onCloseClick={() => setIsOpen(false)}>
-                        <DevItemMap dev={dev} />
-                      </InfoWindow>
-                    )}
-                  </Marker>
-    
-                  <OverlayView
-                    position={{ lat: latitude, lng: longitude }}
-                    mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-                    onClick
-                  >
-                    <div className="custom-marker-label">
-                      <img
-                        src={dev.avatar_url}
-                        alt="Icon"
-                        className="custom-marker-icon"
-                        onClick={() => {
-                          handleMarkerClick(dev._id, dev.bio);
-                        }}
-                      />
-                    </div>
-                  </OverlayView>
-                </div>
-              );
-            })
-          }
-        </GoogleMap>
-      )}
+                return (
+                  <div className='icon-map' key={dev._id}>
+                    <Marker
+                      position={{ lat: latitude, lng: longitude }}
+                      icon={{
+                        url: iconPin,
+                        scaledSize: new window.google.maps.Size(60, 60),
+                      }}
+                      onClick={() => {
+                        handleMarkerClick(dev._id, dev.bio);
+                      }}
+                    >
+                      {
+                        isOpen && infoWindowData?._id === dev._id && (
+                          <InfoWindow onCloseClick={() => setIsOpen(false)}>
+                            <DevItemMap dev={dev} />
+                          </InfoWindow>
+                        )
+                      }
+                    </Marker>
+      
+                    <OverlayView
+                      position={{ lat: latitude, lng: longitude }}
+                      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+                      onClick
+                    >
+                      <div className="custom-marker-label">
+                        <img
+                          src={dev.avatar_url}
+                          alt="Icon"
+                          className="custom-marker-icon"
+                          onClick={() => {
+                            handleMarkerClick(dev._id, dev.bio);
+                          }}
+                        />
+                      </div>
+                    </OverlayView>
+                  </div>
+                );
+              })
+            }
+          </GoogleMap>
+        )
+      }
     </div>
   );
 }
