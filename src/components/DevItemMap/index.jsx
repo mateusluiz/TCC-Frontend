@@ -7,7 +7,7 @@ import './styles.css';
 
 toast.configure()
 
-function DevItemMap ({ dev }) {
+function DevItemMap ({ dev, showDescription = true }) {
     return (
       <div className="dev-map">
         <header>
@@ -19,18 +19,23 @@ function DevItemMap ({ dev }) {
               </div>
             </div>
         </header>
+        {
+          showDescription &&
+          (
+            <div>
+              <p>{dev.bio}</p>
 
-        <p>{dev.bio}</p>
-
-        <div className="group-button">
-          <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
-          target="_blank"
-          rel="noopener noreferrer"
-          >
-            Acessar perfil no Github
-          </a>
-        </div>
-            
+              <div className="group-button">
+                <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
+                target="_blank"
+                rel="noopener noreferrer"
+                >
+                  Acessar perfil no Github
+                </a>
+              </div>
+            </div>
+          ) 
+        }
       </div>
     );
 }
