@@ -9,13 +9,9 @@ function Login(){
     return (
 
         <div className="container">
-        <div id="app">
-
-            <main>
-            <DevLogin />
-            </main>
-
-        </div>
+            <div id="app">
+                <DevLogin />
+            </div>
         </div>
     );
 }
