@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import '../../assets/icon/font-awesome-4.7.0/css/font-awesome.min.css';
 
 import './styles.css';
 
@@ -14,6 +15,7 @@ function DevLogin() {
 
     const [rerender, setRerender] = useState(false);
     const [userData, setUserData] = useState({});
+    const [username, setUsername] = useState(localStorage.getItem("username") || null);
     const history = useHistory(); // Obtenha o objeto history
     let codeParam = null;
 
@@ -22,7 +24,6 @@ function DevLogin() {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             codeParam = urlParams.get("code");
-            console.log(codeParam);
 
             if (codeParam && (localStorage.getItem("accessToken") === null)) {
                 try {
@@ -30,8 +31,6 @@ function DevLogin() {
                         method: "GET",
                     });
                     const data = await response.json();
-
-                    console.log("GET ACCESS TOKEN", data);
 
                     if (data.access_token) {
                         localStorage.setItem("accessToken", data.access_token);
@@ -58,9 +57,11 @@ function DevLogin() {
             });
 
             const data = await response.json();
-            console.log("GET USER DATA:", data);
 
             setUserData(data);
+            setUsername(data.name);
+            localStorage.setItem("username", data.name);
+
         } catch (error) {
             console.error("Error fetching user data:", error);
         }
@@ -72,6 +73,7 @@ function DevLogin() {
 
     function logoutGithub() {
         localStorage.removeItem("accessToken"); // Remove o token de acesso
+        localStorage.removeItem("username"); // Remove o nome do usuário
         setUserData({}); // Limpa os dados do usuário
         codeParam = null; // Limpa o code param
         setRerender(!rerender);
@@ -84,22 +86,38 @@ function DevLogin() {
             <h1>{codeParam}</h1>
             {localStorage.getItem("accessToken") ?
                 <>
-                    <h1>Bem vindo, {userData.login}!</h1>
-                    <div className="options-group">
-                        <a href="/cadastrar-dev">Cadastrar Dev</a>
-                        <a href="/lista-devs">Lista de Devs</a>
-                        <a href="/mapa">Mapa</a>
+                    <div className="logged-container">
+                        <h1>Bem vindo(a), {username}!</h1>
+                        <p>Explore as vantagens de uma experiência personalizada no Dev360. Aproveite ao máximo o que temos a oferecer!</p>
+                        <div className="logged-card-options">  
+                            <a href="/cadastrar-dev" className="card">
+                                <i className="fa fa-user-plus icon" aria-hidden="true"></i>
+                                <p>Cadastrar Dev</p>
+                            </a>
+                            <a href="/lista-devs" className="card">
+                                <i className="fa fa-list-ul icon" aria-hidden="true"></i>
+                                <p>Lista de Devs</p>
+                            </a>
+                            <a href="/mapa" className="card">
+                                <i className="fa fa-map icon" aria-hidden="true"></i>
+                                <p>Mapa</p>
+                            </a>
+                            <a href="/" onClick={logoutGithub} className="card">
+                                <i class="fa fa-sign-out icon" aria-hidden="true"></i>
+                                <p>Logout</p>
+                            </a>
+                        </div>
                     </div>
-                    <button onClick={logoutGithub} className="btn-logout">Logout</button>
-                    <h4>Hey there {userData.login}</h4>
                 </>
 
                 :
 
                 <>
                     <div className="login-card">
-                        <h1>Hey Dev, bem vindo(a)!</h1>
-                        <p>Explore as vantagens de uma experiência de login simplificada.<br></br> Conecte-se usando sua conta do <b>GitHub!</b></p>
+                        <div>
+                            <h1>Hey Dev, bem vindo(a)!</h1>
+                            <p>Explore as vantagens de uma experiência de login simplificada.<br></br> Conecte-se usando sua conta do <b>GitHub!</b></p>
+                        </div>
                         <button onClick={loginWithGithub}>
                             <p>Entrar com GitHub</p>
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
