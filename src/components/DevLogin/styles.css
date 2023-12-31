@@ -28,6 +28,14 @@
 }
 
 /* Estilização da tela do usuário logado */
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
 .logged-container {
     display: flex;
     flex-direction: column;
@@ -111,6 +119,8 @@ button:hover {
 
     .login-card, .logged-container {
         padding: 60px 45px;
+        max-width: 70vw;
+        width: 100vw;
     }
 
     .login-card h1, .logged-container h1 {
@@ -141,6 +151,7 @@ button:hover {
 }
 
 @media screen and (max-width: 600px) {
+
     .login-card, .logged-container {
         padding: 40px 30px;
         max-width: 90vw;
