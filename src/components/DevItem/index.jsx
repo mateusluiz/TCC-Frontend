@@ -54,6 +54,12 @@ function DevItem ({ dev, callback }) {
 
             </header>
             <p>{dev.bio}</p>
+            <a id="githubLink" 
+               href={`https://github.com/${dev.github_username}`} 
+               target="_blank"
+               rel="noopener noreferrer"
+            >  Acessar perfil no Github
+            </a>
             <div className="group-button">
                 {!carregar && (
                   <button className="delete-button"
@@ -74,12 +80,6 @@ function DevItem ({ dev, callback }) {
                 <Link to={`/atualizar/${dev.github_username}`}>
                   <button className="update-button">Atualizar</button>
                 </Link>
-                <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
-                target="_blank"
-                rel="noopener noreferrer"
-                >Acessar perfil no Github</a>
-
-                <button className="more">Ver mais</button>
               </div>
               
           </li>
