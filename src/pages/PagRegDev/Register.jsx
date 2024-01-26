@@ -3,16 +3,15 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
-import './global.css';
-import './Home.css';
-import './Main.css';
+import '../global.css';
+import './Register.css';
 
 import api from '../../services/api';
 import DevForm from '../../components/DevForm';
 
 toast.configure()
 
-function Home() {
+function Register() {
   const [devs, setDevs] = useState([]);
 
   async function handleAddDev(data) {
@@ -36,16 +35,10 @@ function Home() {
   return ( 
     <div className="container">
       <div id="app">
-
-        <main>
-          <strong>Cadastrar Dev</strong>
-          <hr />
           <DevForm onSubmit={handleAddDev} />
-        </main>
-
       </div>
     </div>
   );
 }
 
-export default Home;
+export default Register;

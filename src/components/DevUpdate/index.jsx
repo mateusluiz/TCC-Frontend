@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouteMatch } from 'react-router-dom'
 
-import DevItem from '../DevItem'
-import Home from '../../'
-
 function DevUpdate({ onSubmit }){
 
   const [github_username, setGithub_username] = useState('');
