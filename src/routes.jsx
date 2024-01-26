@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import Home from './pages/PagHome/Home'
+import ProtectedRoute from './pages/ProtectedRoute';
+import Login from './pages/PagLogin/Login'
+import Register from './pages/PagRegDev/Register'
 import Update from './pages/PagUpdate/Update'
 import ListDevs from './pages/PagListDevs/ListDevs'
 
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route exact path="/atualizar/:id" component={Update} />
-      <Route exact path="/lista-devs" component={ListDevs} />
-    </Switch>
-  </BrowserRouter>
-)
+const Routes = () => {
+
+  const [isAuthenticated] = useState(
+    localStorage.getItem('accessToken') !== null
+  );
+  
+  const checkAuthentication = () => {
+    return isAuthenticated;
+  };
+  
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <ProtectedRoute exact path="/cadastrar-dev" component={Register} isAuthenticated={checkAuthentication()}/>
+        <ProtectedRoute exact path="/atualizar/:id" component={Update} isAuthenticated={checkAuthentication()}/>
+        <ProtectedRoute exact path="/lista-devs" component={ListDevs} isAuthenticated={checkAuthentication()}/>
+      </Switch>
+    </Router>
+  );
+}
 
 export default Routes;

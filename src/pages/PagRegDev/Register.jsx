@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
 import './global.css';
-import './Home.css';
+import './Register.css';
 import './Main.css';
 
 import api from '../../services/api';
@@ -12,7 +12,7 @@ import DevForm from '../../components/DevForm';
 
 toast.configure()
 
-function Home() {
+function Register() {
   const [devs, setDevs] = useState([]);
 
   async function handleAddDev(data) {
@@ -48,4 +48,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Register;
