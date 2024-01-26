@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'
-import crypto from 'crypto'
+// import crypto from 'crypto'
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
@@ -42,7 +42,7 @@ function DevItem ({ dev, callback }) {
             <header>
                 <div className="user-info">
                   <img src={dev.avatar_url} alt={dev.name} />
-                  <div class="first-info">
+                  <div className="first-info">
                     <strong id="devName">{dev.name}</strong>
                     <span>{dev.techs.join(', ')}</span>
                   </div>
@@ -54,6 +54,12 @@ function DevItem ({ dev, callback }) {
 
             </header>
             <p>{dev.bio}</p>
+            <a id="githubLink" 
+               href={`https://github.com/${dev.github_username}`} 
+               target="_blank"
+               rel="noopener noreferrer"
+            >  Acessar perfil no Github
+            </a>
             <div className="group-button">
                 {!carregar && (
                   <button className="delete-button"
@@ -74,12 +80,6 @@ function DevItem ({ dev, callback }) {
                 <Link to={`/atualizar/${dev.github_username}`}>
                   <button className="update-button">Atualizar</button>
                 </Link>
-                <a id="githubLink" href={`https://github.com/${dev.github_username}`} 
-                target="_blank"
-                rel="noopener noreferrer"
-                >Acessar perfil no Github</a>
-
-                <button className="more">Ver mais</button>
               </div>
               
           </li>

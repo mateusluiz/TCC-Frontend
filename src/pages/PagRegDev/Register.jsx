@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
-import './global.css';
+import '../global.css';
 import './Register.css';
-import './Main.css';
 
 import api from '../../services/api';
 import DevForm from '../../components/DevForm';
@@ -36,13 +35,7 @@ function Register() {
   return ( 
     <div className="container">
       <div id="app">
-
-        <main>
-          <strong>Cadastrar Dev</strong>
-          <hr />
           <DevForm onSubmit={handleAddDev} />
-        </main>
-
       </div>
     </div>
   );

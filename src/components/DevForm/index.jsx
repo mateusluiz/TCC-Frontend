@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+import './styles.css';
+
 function DevForm({ onSubmit }){
     const [github_username, setGithub_username] = useState('');
     const [techs, setTechs] = useState('');
@@ -38,30 +40,34 @@ function DevForm({ onSubmit }){
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-          <div className="input-block">
-            <label htmlFor="github_username">Usuário do Github: </label>
-            <input 
-              name="github_username" 
-              id="github_username" 
-              required
-              value={github_username}
-              onChange={e => setGithub_username(e.target.value)}
-            ></input>
+      <div className="register-container">
+        <div className="register-items">
+          <div className="register-title">
+            <h1>Cadastrar Dev</h1>
           </div>
+          <form onSubmit={handleSubmit}>
+            <div className="input-block">
+              <label htmlFor="github_username">Usuário do Github: </label>
+              <input 
+                name="github_username" 
+                id="github_username" 
+                required
+                value={github_username}
+                onChange={e => setGithub_username(e.target.value)}
+              ></input>
+            </div>
 
-          <div className="input-block">
-            <label htmlFor="techs">Tecnologias: </label>
-            <input 
-              name="techs" 
-              id="techs" 
-              required
-              value={techs}
-              onChange={e => setTechs(e.target.value)}
-            ></input>
-          </div>
+            <div className="input-block">
+              <label htmlFor="techs">Tecnologias: </label>
+              <input 
+                name="techs" 
+                id="techs" 
+                required
+                value={techs}
+                onChange={e => setTechs(e.target.value)}
+              ></input>
+            </div>
 
-          <div className="input-group">
             <div className="input-block">
               <label htmlFor="latitude">Latitude: </label>
               <input 
@@ -86,10 +92,14 @@ function DevForm({ onSubmit }){
                 >
               </input>
             </div>
-          </div>
 
-          <button type="submit">Cadastrar</button>
-        </form>
+            <div className="submit-block">
+              <button type="submit">Cadastrar</button>
+            </div>
+            
+          </form>
+        </div>
+      </div>
     );
 }
 

@@ -33,15 +33,19 @@ function ListDevs(){
 
     <div className="container">
       <div id="app">
-        <main>
-          <strong>Devs cadastrados</strong>
-          <hr />
-          <ul>
-            {devs.map(dev => (
-              <DevItem key={dev._id} dev={dev} callback={loadDeleteDev}/>
-            ))}
-          </ul>
-        </main>
+        <div className="list-devs-container">
+          <div className="list-devs-items">
+            <div className="list-devs-title">
+              <h1>Lista de Devs cadastrados</h1>
+              <p>Explore a lista de desenvolvedores cadastrados</p>
+            </div>
+            <ul>
+              {devs.map(dev => (
+                <DevItem key={dev._id} dev={dev} callback={loadDeleteDev}/>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
     

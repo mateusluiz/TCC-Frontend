@@ -6,6 +6,7 @@ import Login from './pages/PagLogin/Login'
 import Register from './pages/PagRegDev/Register'
 import Update from './pages/PagUpdate/Update'
 import ListDevs from './pages/PagListDevs/ListDevs'
+import PagMap from './pages/PagMap/PagMap'
 
 const Routes = () => {
 
@@ -24,6 +25,7 @@ const Routes = () => {
         <ProtectedRoute exact path="/cadastrar-dev" component={Register} isAuthenticated={checkAuthentication()}/>
         <ProtectedRoute exact path="/atualizar/:id" component={Update} isAuthenticated={checkAuthentication()}/>
         <ProtectedRoute exact path="/lista-devs" component={ListDevs} isAuthenticated={checkAuthentication()}/>
+        <ProtectedRoute exact path="/mapa" component={PagMap} isAuthenticated={checkAuthentication()}/>
       </Switch>
     </Router>
   );
