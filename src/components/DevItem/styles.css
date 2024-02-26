@@ -130,3 +130,27 @@ li.dev-item .crypto {
 button:hover, .group-button .update-button:hover, .group-button .delete-button:hover{
   background-color: #142D27;
 }
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  .group-button {
+    justify-content: space-evenly;
+  }
+
+  button {
+    margin-top: 20px;
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+  
+  .group-button {
+    justify-content: space-around;
+  }
+  
+  button {
+    margin-top: 10px;
+  }
+
+}
