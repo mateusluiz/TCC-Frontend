@@ -42,59 +42,67 @@ function DevUpdate({ onSubmit }){
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="input-block">
-        <label htmlFor="github_username">Usuário do Github: </label>
-        <input 
-          name="github_username" 
-          id="github_username" 
-          required
-          value={params.id}
-          onChange={e => setGithub_username(e.target.value)}
-          disabled 
-        ></input>
-      </div>
-
-      <div className="input-block">
-        <label htmlFor="techs">Tecnologias: </label>
-        <input 
-          name="techs" 
-          id="techs" 
-          required
-          value={techs}
-          onChange={e => setTechs(e.target.value)}
-        ></input>
-      </div>
-
-      <div className="input-group">
-        <div className="input-block">
-          <label htmlFor="latitude">Latitude: </label>
-          <input 
-            type="number" 
-            name="latitude" 
-            id="latitude" 
-            required 
-            value={latitude} 
-            onChange={e => setLatitude(e.target.value)} >
-          </input>
+    <div className="update-container">
+      <div className="update-items">
+        <div className="update-title">
+          <h1>Atualizar Dev</h1>
         </div>
+        <form onSubmit={handleSubmit}>
+          <div className="input-block">
+            <label htmlFor="github_username">Usuário do Github: </label>
+            <input 
+              name="github_username" 
+              id="github_username" 
+              required
+              value={params.id}
+              onChange={e => setGithub_username(e.target.value)}
+              disabled 
+            ></input>
+          </div>
 
-        <div className="input-block">
-          <label htmlFor="longitude">Longitude: </label>
-          <input 
-            type="number" 
-            name="longitude" 
-            id="longitude" 
-            required 
-            value={longitude}
-            onChange={e => setLongitude(e.target.value)}
-            >
-          </input>
-        </div>
+          <div className="input-block">
+            <label htmlFor="techs">Tecnologias: </label>
+            <input 
+              name="techs" 
+              id="techs" 
+              required
+              value={techs}
+              onChange={e => setTechs(e.target.value)}
+            ></input>
+          </div>
+
+          <div className="input-group">
+            <div className="input-block">
+              <label htmlFor="latitude">Latitude: </label>
+              <input 
+                type="number" 
+                name="latitude" 
+                id="latitude" 
+                required 
+                value={latitude} 
+                onChange={e => setLatitude(e.target.value)} >
+              </input>
+            </div>
+
+            <div className="input-block">
+              <label htmlFor="longitude">Longitude: </label>
+              <input 
+                type="number" 
+                name="longitude" 
+                id="longitude" 
+                required 
+                value={longitude}
+                onChange={e => setLongitude(e.target.value)}
+                >
+              </input>
+            </div>
+          </div>
+          <div className="submit-block">
+            <button type="submit">Salvar</button>
+          </div>
+        </form>
       </div>
-
-      <button type="submit">Salvar</button>
-    </form>
+    </div>
   );
 }
 
