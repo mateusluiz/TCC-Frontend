@@ -7,6 +7,7 @@ import api from '../../services/api'
 import DevUpdate from '../../components/DevUpdate'
 
 import './Update.css';
+import '../global.css';
 
 toast.configure()
 
@@ -14,7 +15,6 @@ function Update(){
 
   const [devs, setDevs] = useState([]);
 
-    
   async function handleUpdateDev(data) {
     
     try {
@@ -36,15 +36,12 @@ function Update(){
   }
 
   return (
-
-    <div className="container update">
-      <div className="group-update">
-        <strong>Meu usuário</strong>
-        <hr />
+    <div className="container">
+      <div id="app">
         <DevUpdate onSubmit={handleUpdateDev}/>
       </div>
     </div>
-  )
+  );
 }
 
 export default Update;

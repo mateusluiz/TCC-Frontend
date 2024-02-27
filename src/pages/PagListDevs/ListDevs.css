@@ -11,16 +11,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: #FFF;
   border-radius: 10px;
-  backdrop-filter: blur(10px);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border: 2px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
   width: 80vw;
   padding: 40px 0px;
   gap: 40px;
+  min-height: 50vh;
 }
 
 .list-devs-title {
@@ -45,4 +45,36 @@
   flex-wrap: wrap;
   list-style-type: none;
   justify-content: center;
+}
+
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+  
+  .list-devs-items {
+    width: 90vw;
+  }
+
+  .list-devs-title h1 {
+      font-size: 28px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  
+  .list-devs-items {
+    width: 90vw;
+  }
+
+  .list-devs-items ul {
+    margin: 0 12px;
+  }
+  
+  .list-devs-title h1 {
+      font-size: 24px;
+  }
+
+  .list-devs-title {
+      font-size: 14px;
+  }
+
 }
